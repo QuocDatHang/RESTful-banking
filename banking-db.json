@@ -1,0 +1,22 @@
+{
+  "customers": [
+    {
+      "id": 1,
+      "fullName": "Lenore Pruitt",
+      "email": "hucor@mailinator.com",
+      "phone": "+1 (459) 697-6702",
+      "address": "25 Nguyen Tri Phuong",
+      "balance": 0,
+      "delected": false
+    },
+    {
+      "fullName": "Mr Bean",
+      "email": "aaaaa@mailinator.com",
+      "phone": "+1 (332) 222-3344",
+      "address": "25 Nguyen Hue",
+      "balance": 10000,
+      "delected": false,
+      "id": 3
+    }
+  ]
+}
