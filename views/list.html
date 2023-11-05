@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="../assets/bootstrapv5-3-2/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/customize.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 </head>
 
 <body>
@@ -16,47 +18,167 @@
                 <div class="container-fluid">
                     <div class="navbar-brand">List of customers</div>
                     <div class="d-flex" style="gap: 10px">
-                        <a href="customers/transferHistories">
-                            <button class="btn btn-outline-light" type="button">
-                                <i class="fas fa-history"></i>
-                                Transfer histories
-                            </button>
-                        </a>
-                        <a href="create.html">
-                            <button class="btn btn-outline-light" type="button">
-                                <i class="far fa-plus-square"></i>
-                                Add new customer
-                            </button>
-                        </a>
+                        <button class="btn btn-outline-light" type="button">
+                            <i class="fas fa-history"></i>
+                            Transfer histories
+                        </button>
+                        <button class="btn btn-outline-light" id="btnShowCreate" type="button" data-bs-toggle="modal"
+                            data-bs-target="#modalCreate">
+                            <i class="far fa-plus-square"></i>
+                            Add new customer
+                        </button>
                     </div>
                 </div>
             </nav>
         </header>
 
         <div class="content">
-            <div class="container">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>FullName</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Address</th>
-                            <th>Balance</th>
-                            <th colspan="5">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="dataCustomer">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>FullName</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                        <th>Balance</th>
+                        <th colspan="5">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="dataCustomer">
 
-                    </tbody>
-                </table>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="liveToast" class="toast align-items-center text-bg-primary border-0" role="alert" aria-live="assertive"
+            aria-atomic="true">
+            <div class="d-flex">
+                <div id="toast-body" class="toast-body">
+                </div>
+                <button type="button" id="btnCloseToast" class="btn-close btn-close-white me-2 m-auto"
+                    data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
         </div>
     </div>
 
+    <!-- MODAL CREATE -->
+    <div class="modal fade" id="modalCreate" tabindex="1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Create Customer</h1>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        <div class="row mb-3 mt-3">
+                            <div class="col-lg-6">
+                                <label for="fullNameCre">Full Name</label>
+                                <input type="text" class="form-control" id="fullNameCre">
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="emailCre">Email</label>
+                                <input type="email" class="form-control" id="emailCre">
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="phoneCre">Phone</label>
+                                <input type="tel" class="form-control" id="phoneCre">
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="addressCre">Address</label>
+                                <input type="text" class="form-control" id="addressCre">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnCloseCreate" class="btn btn-secondary"
+                        data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="btnCreate">
+                        <i class="fas fa-plus"></i>
+                        Create Customer
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL UPDATE -->
+    <div class="modal fade" id="modalUpdate" tabindex="1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Update Customer</h1>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        <div class="row mb-3 mt-3">
+                            <div class="col-lg-6">
+                                <label for="fullNameUpdate">Full Name</label>
+                                <input type="text" class="form-control" id="fullNameUpdate">
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="emailUpdate">Email</label>
+                                <input type="email" class="form-control" id="emailUpdate">
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="phoneUpdate">Phone</label>
+                                <input type="tel" class="form-control" id="phoneUpdate">
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="addressUpdate">Address</label>
+                                <input type="text" class="form-control" id="addressUpdate">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnCloseUpdate" class="btn btn-secondary"
+                        data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-secondary" id="btnUpdate">
+                        <i class="fas fa-plus"></i>
+                        Update Customer
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
     <script>
         const dataCustomer = document.querySelector('#dataCustomer');
+        const toastLive = document.getElementById('liveToast');
+        const toastBody = document.getElementById('toast-body');
+        const btnCloseToast = document.getElementById('btnCloseToast');
+        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLive);
+        let customerId = 0;
+
+        // Bat tat modal
+
+        // function openModal(modalId) {
+        //     var modal = document.getElementById(modalId);
+        //     modal.classList.add('show');
+        //     modal.removeAttribute('aria-hidden');
+        //     modal.style.display = 'block';
+        //     console.log('open modal');
+        // }
+
+
+        // const btnShowCreate = document.getElementById('btnShowCreate');
+        // btnShowCreate.addEventListener('click', openModal('modalCreate'));
+
+        // const btnShowUpdate = document.getElementById('btnShowUpdate');
+        // btnShowUpdate.addEventListener('click', openModal ('modalUpdate'));
+
+
+        // const btnCloseCreate = document.getElementById('btnCloseCreate');
+        // btnCloseCreate.addEventListener('click', closeModal('modalCreate'));
+
+        // Bat tat modal
+
 
         async function getAllCustomers() {
             const response = await fetch("http://localhost:3300/customers");
@@ -65,7 +187,24 @@
             customers.forEach(item => {
                 dataCustomer.innerHTML += renderCustomer(item);
             });
+
+            const btnEdit = document.querySelectorAll('.edit')
+            btnEdit.forEach(item => {
+                item.addEventListener('click', async () => {
+                    customerId = item.getAttribute('data-id')
+                    const customer = await getCustomerById(customerId);
+
+                    openModal('modalUpdate');
+
+                    document.getElementById('fullNameUpdate').value = customer.fullName;
+                    document.getElementById('emailUpdate').value = customer.email;
+                    document.getElementById('phoneUpdate').value = customer.phone;
+                    document.getElementById('addressUpdate').value = customer.address;
+                })
+
+            })
         }
+
         getAllCustomers();
 
         const renderCustomer = (obj) => {
@@ -78,13 +217,7 @@
                     <td>${obj.address}</td>
                     <td>${obj.balance}</td>
                     <td class="text-center">
-                        <button class="btn btn-outline-secondary edit" 
-                            data-id="${obj.id}"
-                            data-full-name="${obj.fullName}"
-                            data-email="${obj.email}"
-                            data-phone="${obj.phone}"
-                            data-address="${obj.address}"
-                        >
+                        <button class="btn btn-outline-secondary edit" data-id="${obj.id}">
                             <i class="fa fa-pencil-alt"></i>
                         </button>
                         <button class="btn btn-outline-success">
@@ -106,49 +239,95 @@
             `
         }
 
+        const btnCreate = document.getElementById("btnCreate");
+
+        btnCreate.addEventListener('click', async () => {
+            const fullName = document.getElementById('fullNameCre').value;
+            const email = document.getElementById('emailCre').value;
+            const phone = document.getElementById('phoneCre').value;
+            const address = document.getElementById('addressCre').value;
+            const balance = 0;
+            const deleted = 0;
+
+            const obj = {
+                fullName,
+                email,
+                phone,
+                address,
+                balance,
+                deleted
+            }
+
+            const createCustomer = await fetch("http://localhost:3300/customers", {
+                method: 'POST',
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                },
+                body: JSON.stringify(obj)
+            })
+
+            const str = await createCustomer.json();
+            dataCustomer.innerHTML += renderCustomer(str);
+            closeModal('modalCreate');
+        })
+
+        const btnUpdate = document.getElementById("btnUpdate");
+        btnUpdate.addEventListener('click', async () => {
+            const fullName = document.getElementById('fullNameUpdate').value
+            const email = document.getElementById('emailUpdate').value
+            const phone = document.getElementById('phoneUpdate').value
+            const address = document.getElementById('addressUpdate').value
+
+            const obj = {
+                fullName,
+                email,
+                phone,
+                address
+            }
+
+            const updateCustomer = await fetch("http://localhost:3300/customers/" + customerId, {
+                method: 'PATCH',
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                },
+                body: JSON.stringify(obj)
+            });
+            const customer = await response.json();
+
+            const updateRow = document.getElementById('tr_' + customerId)
+            updateRow.innerHTML = renderCustomer(customer);
+
+            closeModal('modalUpdate');
+            toastBody.innerText = 'Cập nhật thông tin thành công'
+            toastBootstrap.show()
+
+            setTimeout(() => {
+                btnCloseToast.click()
+            }, 2500);
+        })
+
+
+        const getCustomerById = async (customerId) => {
+            const response = await fetch("http://localhost:3300/customers/" + customerId);
+            const customer = await response.json();
+            return customer;
+        }
+
+        function openModal(elem) {
+            let el = document.getElementById(elem);
+            new bootstrap.Modal(el).show();
+        }
+
+
+        function closeModal(modalId) {
+            var modal = document.getElementById(modalId);
+            modal.classList.remove('show');
+            modal.setAttribute('aria-hidden', 'true');
+            modal.style.display = 'none';
+            console.log("ok");
+        }
+
     </script>
 </body>
 
 </html>
-
-<!--  
-<td>
-    <a th:href="@{customers/update/__${item.id}__}">
-        <button class="btn btn-outline-secondary" data-bs-toggle="tooltip"
-                data-bs-placement="top" title="Edit">
-            <i class="far fa-edit"></i>
-        </button>
-    </a>
-</td>
-<td>
-    <a th:href="@{customers/deposit/__${item.id}__}">
-        <button class="btn btn-outline-success" data-bs-toggle="tooltip"
-                data-bs-placement="top" title="Deposit">
-            <i class="fas fa-plus"></i>
-        </button>
-    </a>
-</td>
-<td>
-    <a th:href="@{customers/withdraw/__${item.id}__}">
-        <button class="btn btn-outline-warning" data-bs-toggle="tooltip"
-                data-bs-placement="top" title="Withdraw">
-            <i class="fas fa-minus"></i>
-        </button>
-    </a>
-</td>
-<td>
-    <a th:href="@{/customers/transfer/__${item.id}__}">
-        <button class="btn btn-outline-primary" data-bs-toggle="tooltip"
-                data-bs-placement="top" title="Transfer money">
-            <i class="fas fa-exchange-alt"></i>
-        </button>
-    </a>
-</td>
-<td>
-    <a th:href="@{/customers/delete/__${item.id}__}" onclick="return confirm('Do you want to delete ?')">
-    <button class="btn btn-outline-danger" data-bs-toggle="tooltip"
-            data-bs-placement="top" title="Ban">
-        <i class="fas fa-ban"></i>
-    </button>
-    </a>
-</td> -->
