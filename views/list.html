@@ -96,9 +96,9 @@
                 <div class="modal-footer">
                     <button type="button" id="btnCloseCreate" class="btn btn-secondary"
                         data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" id="btnCreate">
+                    <button type="button" class="btn btn-primary" id="btnCreate">
                         <i class="fas fa-plus"></i>
-                        Create Customer
+                        Create
                     </button>
                 </div>
             </div>
@@ -137,9 +137,97 @@
                 <div class="modal-footer">
                     <button type="button" id="btnCloseUpdate" class="btn btn-secondary"
                         data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-secondary" id="btnUpdate">
+                    <button type="button" class="btn btn-secondary" id="btnUpdate">
                         <i class="fas fa-plus"></i>
-                        Update Customer
+                        Update
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DEPOSIT -->
+
+    <div class="modal fade" id="modalDeposit" tabindex="1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Deposit Customer</h1>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        <div class="row mb-3 mt-3">
+                            <div class="col-lg-6">
+                                <label for="fullName" class="form-label fw-bold">Full Name</label>
+                                <input type="text" class="form-control" id="fullNameDeposit" readonly>
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="email" class="form-label fw-bold">Email</label>
+                                <input type="email" class="form-control" id="emailDeposit" readonly>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-lg-6">
+                                <label for="balance" class="form-label fw-bold">Current balance</label>
+                                <input type="text" class="form-control" id="balanceDeposit" disabled>
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="transactionAmount" class="form-label fw-bold">Transaction amount</label>
+                                <input type="number" class="form-control" id="transactionAmountDeposit">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnCloseDeposit" class="btn btn-secondary"
+                        data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" id="btnDeposit">
+                        <i class="fas fa-plus"></i>
+                        Deposit
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL WITHDRAW -->
+
+    <div class="modal fade" id="modalWithdraw" tabindex="1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Withdraw Customer</h1>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        <div class="row mb-3 mt-3">
+                            <div class="col-lg-6">
+                                <label for="fullName" class="form-label fw-bold">Full Name</label>
+                                <input type="text" class="form-control" id="fullNameWithdraw" readonly>
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="email" class="form-label fw-bold">Email</label>
+                                <input type="email" class="form-control" id="emailWithdraw" readonly>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-lg-6">
+                                <label for="balance" class="form-label fw-bold">Current balance</label>
+                                <input type="text" class="form-control" id="balanceWithdraw" disabled>
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="transactionAmount" class="form-label fw-bold">Transaction amount</label>
+                                <input type="number" class="form-control" id="transactionAmountWithdraw">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnCloseWithdraw" class="btn btn-secondary"
+                        data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-warning" id="btnWithdraw">
+                        <i class="fas fa-plus"></i>
+                        Withdraw
                     </button>
                 </div>
             </div>
@@ -155,29 +243,6 @@
         const btnCloseToast = document.getElementById('btnCloseToast');
         const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLive);
         let customerId = 0;
-
-        // Bat tat modal
-
-        // function openModal(modalId) {
-        //     var modal = document.getElementById(modalId);
-        //     modal.classList.add('show');
-        //     modal.removeAttribute('aria-hidden');
-        //     modal.style.display = 'block';
-        //     console.log('open modal');
-        // }
-
-
-        // const btnShowCreate = document.getElementById('btnShowCreate');
-        // btnShowCreate.addEventListener('click', openModal('modalCreate'));
-
-        // const btnShowUpdate = document.getElementById('btnShowUpdate');
-        // btnShowUpdate.addEventListener('click', openModal ('modalUpdate'));
-
-
-        // const btnCloseCreate = document.getElementById('btnCloseCreate');
-        // btnCloseCreate.addEventListener('click', closeModal('modalCreate'));
-
-        // Bat tat modal
 
 
         async function getAllCustomers() {
@@ -201,7 +266,43 @@
                     document.getElementById('phoneUpdate').value = customer.phone;
                     document.getElementById('addressUpdate').value = customer.address;
                 })
+            })
 
+            const btnDelete = document.querySelectorAll('.delete');
+            btnDelete.forEach(item => {
+                item.addEventListener('click', async () => {
+                    customerId = item.getAttribute('data-id')
+
+                    const updateCustomer = await fetch("http://localhost:3300/customers/" + customerId, {
+                        method: 'DELETE'
+                    });
+                })
+            })
+
+            const btnShowDeposit = document.querySelectorAll('.deposit')
+            btnShowDeposit.forEach(item => {
+                item.addEventListener('click', async () => {
+                    customerId = item.getAttribute('data-id')
+                    const customer = await getCustomerById(customerId);
+                    openModal('modalDeposit');  
+
+                    document.getElementById('fullNameDeposit').value = customer.fullName;
+                    document.getElementById('emailDeposit').value = customer.email;
+                    document.getElementById('balanceDeposit').value = customer.balance;
+                })
+            })
+
+            const btnShowWithdraw = document.querySelectorAll('.withdraw')
+            btnShowWithdraw.forEach(item => {
+                item.addEventListener('click', async () => {
+                    customerId = item.getAttribute('data-id')
+                    const customer = await getCustomerById(customerId);
+                    openModal('modalWithdraw');  
+
+                    document.getElementById('fullNameWithdraw').value = customer.fullName;
+                    document.getElementById('emailWithdraw').value = customer.email;
+                    document.getElementById('balanceWithdraw').value = customer.balance;
+                })
             })
         }
 
@@ -220,18 +321,17 @@
                         <button class="btn btn-outline-secondary edit" data-id="${obj.id}">
                             <i class="fa fa-pencil-alt"></i>
                         </button>
-                        <button class="btn btn-outline-success">
+                        <button class="btn btn-outline-success deposit" data-id="${obj.id}">
                             <i class="fas fa-plus"></i>
                         </button>
-                        <button class="btn btn-outline-warning">
+                        <button class="btn btn-outline-warning withdraw" data-id="${obj.id}">
                             <i class="fas fa-minus"></i>
                         </button>
-                        <button class="btn btn-outline-primary">
+                        <button class="btn btn-outline-primary transfer" data-id="${obj.id}">
                             <i class="fas fa-exchange-alt"></i>
                         </button>
                         <button class="btn btn-outline-danger delete"
-                            data-id="${obj.id}"
-                        >
+                            data-id="${obj.id}">
                             <i class="fas fa-trash-alt"></i>
                         </button>
                     </td>
@@ -306,6 +406,84 @@
             }, 2500);
         })
 
+        const btnDeposit = document.getElementById("btnDeposit");
+        btnDeposit.addEventListener('click', async () => {
+            const fullName = document.getElementById('fullNameDeposit').value
+            const email = document.getElementById('emailDeposit').value
+            var balance = document.getElementById('balanceDeposit').value
+            var transactionAmount = document.getElementById('transactionAmountDeposit').value
+            
+            balance = parseFloat(balance);
+            transactionAmount = parseFloat(transactionAmount);
+            if (transactionAmount <= 0 || transactionAmount > 1000000) {
+                return;
+            }
+            balance = balance + transactionAmount;
+
+            const obj = {
+                balance
+            }
+
+            const depositCustomer = await fetch("http://localhost:3300/customers/" + customerId, {
+                method: 'PATCH',
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                },
+                body: JSON.stringify(obj)
+            });
+            const customer = await response.json();
+
+            const updateRow = document.getElementById('tr_' + customerId)
+            updateRow.innerHTML = renderCustomer(customer);
+
+            closeModal('modalUpdate');
+            toastBody.innerText = 'Nạp tiền thành công'
+            toastBootstrap.show()
+
+            setTimeout(() => {
+                btnCloseToast.click()
+            }, 2500);
+        })
+
+        const btnWithdraw = document.getElementById("btnWithdraw");
+        btnWithdraw.addEventListener('click', async () => {
+            const fullName = document.getElementById('fullNameWithdraw').value
+            const email = document.getElementById('emailWithdraw').value
+            var balance = document.getElementById('balanceWithdraw').value
+            var transactionAmount = document.getElementById('transactionAmountWithdraw').value
+            
+            balance = parseFloat(balance);
+            transactionAmount = parseFloat(transactionAmount);
+            if (transactionAmount > balance || transactionAmount <= 0){
+                return;
+            }
+            balance = balance - transactionAmount;  
+
+            const obj = {
+                balance
+            }
+
+            const withdrawCustomer = await fetch("http://localhost:3300/customers/" + customerId, {
+                method: 'PATCH',
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                },
+                body: JSON.stringify(obj)
+            });
+            const customer = await response.json();
+
+            const updateRow = document.getElementById('tr_' + customerId)
+            updateRow.innerHTML = renderCustomer(customer);
+
+            closeModal('modalUpdate');
+            toastBody.innerText = 'Nạp tiền thành công'
+            toastBootstrap.show()
+
+            setTimeout(() => {
+                btnCloseToast.click()
+            }, 2500);
+        })
+
 
         const getCustomerById = async (customerId) => {
             const response = await fetch("http://localhost:3300/customers/" + customerId);
@@ -318,13 +496,11 @@
             new bootstrap.Modal(el).show();
         }
 
-
         function closeModal(modalId) {
             var modal = document.getElementById(modalId);
             modal.classList.remove('show');
             modal.setAttribute('aria-hidden', 'true');
             modal.style.display = 'none';
-            console.log("ok");
         }
 
     </script>

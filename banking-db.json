@@ -1,105 +1,6 @@
 {
   "customers": [
     {
-      "id": 1,
-      "fullName": "Lenore Pruitt11",
-      "email": "hucor@mailinator.com",
-      "phone": "+1 (459) 697-6702",
-      "address": "25 Nguyen Tri Phuong",
-      "balance": 0,
-      "delected": false
-    },
-    {
-      "fullName": "Mr Bean",
-      "email": "aaaaa@mailinator.com",
-      "phone": "+1 (332) 222-3344",
-      "address": "25 Nguyen Hue",
-      "balance": 10000,
-      "delected": false,
-      "id": 3
-    },
-    {
-      "fullName": "Chaim Kerr",
-      "email": "myki@mailinator.com",
-      "phone": "11111111111111",
-      "address": "Aute voluptas iste o",
-      "balance": 0,
-      "deleted": 0,
-      "id": 4
-    },
-    {
-      "fullName": "Joseph Weiss",
-      "email": "kecop@mailinator.com",
-      "phone": "2222222222233",
-      "address": "Veniam esse et nul",
-      "balance": 0,
-      "deleted": 0,
-      "id": 5
-    },
-    {
-      "fullName": "Leila Tyson11",
-      "email": "bucanato@mailinator.com",
-      "phone": "+1 (878) 584-1128",
-      "address": "Neque a sint rem vo",
-      "balance": 0,
-      "deleted": 0,
-      "id": 6
-    },
-    {
-      "fullName": "Hasad Bennett",
-      "email": "zabemowez@gmail.com",
-      "phone": "0818 306 598",
-      "address": "Tempore et cupidata",
-      "balance": 0,
-      "deleted": 0,
-      "id": 7
-    },
-    {
-      "fullName": "Zelenia Goff",
-      "email": "wywivehefe@gmail.com",
-      "phone": "0552 781 604",
-      "address": "Explicabo Similique",
-      "balance": 0,
-      "deleted": 0,
-      "id": 8
-    },
-    {
-      "fullName": "Timon Kinney",
-      "email": "dagutegeju@gmail.com",
-      "phone": "0905 211 632",
-      "address": "Est quia minim cupid",
-      "balance": 0,
-      "deleted": 0,
-      "id": 9
-    },
-    {
-      "fullName": "Charles Nielsen11",
-      "email": "kubegid@gmail.com",
-      "phone": "0821 465 217",
-      "address": "Laudantium quos adi",
-      "balance": 0,
-      "deleted": 0,
-      "id": 10
-    },
-    {
-      "fullName": "Winifred Charles",
-      "email": "dorery@gmail.com",
-      "phone": "0262 606 208",
-      "address": "Perferendis debitis ",
-      "balance": 0,
-      "deleted": 0,
-      "id": 11
-    },
-    {
-      "fullName": "Wylie Rivas",
-      "email": "tarit@gmail.com",
-      "phone": "0119 994 602",
-      "address": "Sed consequat Iusto",
-      "balance": 0,
-      "deleted": 0,
-      "id": 12
-    },
-    {
       "fullName": "Blossom Hill",
       "email": "hapaw@gmail.com",
       "phone": "0787 553 423",
@@ -109,28 +10,10 @@
       "id": 13
     },
     {
-      "fullName": "Kuame Bender",
-      "email": "paqugipy@gmail.com",
-      "phone": "0877 525 703",
-      "address": "Ullam aliquam facere",
-      "balance": 0,
-      "deleted": 0,
-      "id": 14
-    },
-    {
-      "fullName": "",
-      "email": "",
-      "phone": "",
-      "address": "",
-      "balance": 0,
-      "deleted": 0,
-      "id": 15
-    },
-    {
-      "fullName": "Bo Mills",
-      "email": "tarovofiba@gmail.com",
-      "phone": "0675 105 364",
-      "address": "Qui blanditiis velit",
+      "fullName": "Meredith Padilla",
+      "email": "vikinybeky@gmail.com",
+      "phone": "0152 759 556",
+      "address": "12-Nov-1982",
       "balance": 0,
       "deleted": 0,
       "id": 16
@@ -149,9 +32,36 @@
       "email": "demicowy@gmail.com12",
       "phone": "0956 311 268",
       "address": "Irure eos ipsam mini",
-      "balance": 0,
+      "balance": 110000,
       "deleted": 0,
       "id": 18
+    },
+    {
+      "fullName": "Claire Carroll",
+      "email": "tege@mailinator.com",
+      "phone": "33333333",
+      "address": "Sint amet corporis",
+      "balance": 3000,
+      "deleted": 0,
+      "id": 19
+    },
+    {
+      "fullName": "Rylee",
+      "email": "womihigomy@gmail.com",
+      "phone": "0629 905 974",
+      "address": "Ducimus maxime eum ",
+      "balance": 0,
+      "deleted": 0,
+      "id": 20
+    },
+    {
+      "fullName": "Ali Hammond",
+      "email": "vuta@gmail.com",
+      "phone": "0832 293 492",
+      "address": "Perspiciatis quos m",
+      "balance": 1,
+      "deleted": 0,
+      "id": 21
     }
   ]
 }
